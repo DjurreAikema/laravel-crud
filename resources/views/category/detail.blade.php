@@ -3,22 +3,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
-                <h3>Products</h3>
+            <div class="col-md-12">
+                <h3>{{ $category->name }}</h3>
             </div>
-            <div class="col-md-2">
-                <a class="btn btn-sm btn-success" href="{{ route('product.create') }}">Create new product</a>
-            </div>
-        </div>
-        <hr>
-
-        @if($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
-
-        <div class="row">
+            <hr>
             <div class="col-md-9">
                 @foreach($products as $product)
                     <div class="card mb-3">
@@ -51,7 +39,7 @@
             </div>
             <div class="col-md-3">
                 <ul>
-                    @foreach($categories as $category)
+                    @foreach($other_categories as $category)
                         <li><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
