@@ -2,7 +2,7 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="..." class="card-img" alt="...">
+                <img src="https://i.kym-cdn.com/photos/images/newsfeed/000/349/786/238.jpg" class="card-img" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -10,7 +10,6 @@
                     <p class="card-text">This is a wider card with supporting text below as a natural
                         lead-in to additional content. This content is a little bit longer.</p>
                     <p class="card-text">{{ $product->price }}</p>
-                    <p class="card-text">{{ $product->category_id }}</p>
                     <form action="{{ route('product.destroy', $product->id) }}" method="post">
                         <a class="btn btn-sm btn-success"
                            href="{{ route('product.show', $product->id) }}">Show</a>

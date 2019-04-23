@@ -22,10 +22,11 @@
             <div class="col-md-9">
                 @include('includes.product')
             </div>
-            <div class="col-md-3">
-                <ul>
+            <div class="col-md-3 card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong style="margin-left:-10px;">Categories:</strong></li>
                     @foreach($categories as $category)
-                        <li><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></li>
+                        <li class="list-group-item"><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
