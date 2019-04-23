@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Product;
 
@@ -10,20 +11,23 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->paginate(10);
-        return view('product.index', compact('products'))
+        $categories = Category::all();
+        return view('product.index', compact('products', 'categories'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function create()
     {
-        return view('product.create');
+        $categories = Category::all();
+        return view('product.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'category_id' => 'required'
         ]);
 
         Product::create($request->all());
@@ -40,19 +44,22 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('product.edit', compact('product'));
+        $categories = Category::all();
+        return view('product.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'category_id' => 'required'
         ]);
 
         $product = Product::find($id);
         $product->name = $request->name;
         $product->price = $request->price;
+        $product->category_id = $request->category_id;
         $product->save();
 
         return redirect()->route('product.index')

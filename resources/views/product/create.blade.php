@@ -33,6 +33,15 @@
                     <br>
                 </div>
                 <div class="col-md-12">
+                    <label>Product category:</label>
+                    <select class="form-control" name="category_id">
+                        @foreach($categories as $category)
+                            <option class="form-control" value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    <br>
+                </div>
+                <div class="col-md-12">
                     <a href="{{ route('product.index') }}" class="btn btn-sm btn-success">Back</a>
                     <button type="submit" class="btn btn-sm btn-primary">Create product</button>
                 </div>

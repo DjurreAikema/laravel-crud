@@ -10,6 +10,7 @@
                 <a class="btn btn-sm btn-success" href="{{ route('product.create') }}">Create new product</a>
             </div>
         </div>
+        <hr>
 
         @if($message = Session::get('success'))
             <div class="alert alert-success">
@@ -18,7 +19,7 @@
         @endif
 
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 @foreach($products as $product)
                     <div class="card mb-3">
                         <div class="row no-gutters">
@@ -31,6 +32,7 @@
                                     <p class="card-text">This is a wider card with supporting text below as a natural
                                         lead-in to additional content. This content is a little bit longer.</p>
                                     <p class="card-text">{{ $product->price }}</p>
+                                    <p class="card-text">{{ $product->category_id }}</p>
                                     <form action="{{ route('product.destroy', $product->id) }}" method="post">
                                         <a class="btn btn-sm btn-success"
                                            href="{{ route('product.show', $product->id) }}">Show</a>
@@ -46,6 +48,13 @@
                     </div>
                 @endforeach
                 {!! $products->links() !!}
+            </div>
+            <div class="col-md-3">
+                <ul>
+                    @foreach($categories as $category)
+                        <li>{{ $category->name }}</li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
