@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Faker\Provider\File;
 use Illuminate\Http\Request;
 use App\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -31,7 +33,7 @@ class ProductController extends Controller
             'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
 
-        $imageName = time().'.'.request()->product_image->getClientOriginalName();
+        $imageName = time() . '.' . request()->product_image->getClientOriginalName();
         request()->product_image->move(public_path('media'), $imageName);
 
         $requestData = $request->all();
@@ -76,6 +78,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        Storage::delete(public_path('media') . "\\" . $product->product_image);
+        dd(public_path('media') . "\\" . $product->product_image);
+
         $product->delete();
         return redirect()->route('product.index')
             ->with('success', "{$product->name} has been deleted");
