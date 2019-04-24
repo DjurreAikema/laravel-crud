@@ -2,7 +2,7 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="https://i.kym-cdn.com/photos/images/newsfeed/000/349/786/238.jpg" class="card-img" alt="...">
+                <img src="{{ "media\\" . $product->product_image }}" class="card-img" alt="Product image">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
