@@ -34,12 +34,14 @@ class ProductController extends Controller
         ]);
 
         $imageName = time() . '.' . request()->product_image->getClientOriginalName();
-        request()->product_image->move(public_path('media'), $imageName);
-
+        // TODO Clean this up
         $requestData = $request->all();
         $requestData['product_image'] = $imageName;
 
-        Product::create($requestData);
+        if (Product::create($requestData)) {
+            request()->product_image->move(public_path('media'), $imageName);
+        };
+
         return redirect()->route('product.index')
             ->with('success', 'New product created');
     }
@@ -78,8 +80,10 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        Storage::delete(public_path('media') . "\\" . $product->product_image);
-        dd(public_path('media') . "\\" . $product->product_image);
+
+        if(file_exists("media\\" . $product->product_image)){
+            @unlink("media\\" . $product->product_image);
+        }
 
         $product->delete();
         return redirect()->route('product.index')
