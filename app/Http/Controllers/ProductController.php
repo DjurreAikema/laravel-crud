@@ -27,10 +27,17 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
 
-        Product::create($request->all());
+        $imageName = time().'.'.request()->product_image->getClientOriginalName();
+        request()->product_image->move(public_path('media'), $imageName);
+
+        $requestData = $request->all();
+        $requestData['product_image'] = $imageName;
+
+        Product::create($requestData);
         return redirect()->route('product.index')
             ->with('success', 'New product created');
     }
