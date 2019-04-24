@@ -1,21 +1,21 @@
 <nav class="navbar navbar-expand-md navbar-dark navbar-laravel" style="background-color: #4484CE">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            Praktijk Piet Mulder
         </a>
         <a class="navbar-brand">
             |
         </a>
-        <a class="navbar-brand" href="{{ route('home') }}">
+        <a class="navbar-brand" href="{{ route('home') }}" style="margin:0px 15px;">
             Home
         </a>
-        <a class="navbar-brand" href="{{ route('treatment.index') }}">
+        <a class="navbar-brand" href="{{ route('treatment.index') }}" style="margin:0px 15px;">
             Behandelingen
         </a>
-        <a class="navbar-brand" href="{{ route('product.index') }}">
+        <a class="navbar-brand" href="{{ route('product.index') }}" style="margin:0px 15px;">
             Producten
         </a>
-        <a class="navbar-brand" href="{{ route('contact.index') }}">
+        <a class="navbar-brand" href="{{ route('contact.index') }}" style="margin:0px 15px;">
             Contact
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
