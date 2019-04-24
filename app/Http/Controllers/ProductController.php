@@ -30,7 +30,9 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required',
             'category_id' => 'required',
-            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'summary' => 'required|max:225',
+            'description' => 'required',
         ]);
 
         $imageName = time() . '.' . request()->product_image->getClientOriginalName();

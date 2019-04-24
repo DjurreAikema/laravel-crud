@@ -2,7 +2,8 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img style="height: 220px" src="{{ "media\\" . $product->product_image }}" class="card-img" alt="Product image">
+                <img style="height: 220px" src="{{ "media\\" . $product->product_image }}" class="card-img"
+                     alt="Product image">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -14,10 +15,11 @@
                             <h3 class="card-text">&euro; {{ $product->price }}</h3>
                         </div>
                     </div>
-                    <p class="card-text">This is a wider card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">Te bestellen via telefoon: 0516-514973<br> of Email: pietmulder@kpnplanet.nl
-                        <br><small class="text-muted"><a href="#">Verkoopvoorwaarden</a></small></p>
+                    <p class="card-text">{{ $product->summary }}</p>
+                    <p style="margin-bottom: -15px" class="card-text">
+                        Te bestellen via telefoon: 0516-514973<br>of Email: pietmulder@kpnplanet.nl<br>
+                        <small class="text-muted"><a href="#">Verkoopvoorwaarden</a></small>
+                    </p>
                 </div>
             </div>
         </div>
