@@ -27,8 +27,8 @@ class CategoryController extends Controller
         ]);
 
         Category::create($request->all());
-        return redirect()->route('category.index')
-            ->with('success', 'New category created');
+        return redirect()->route('admin.index')
+            ->with('success', "Nieuwe categorie is aangemaakt");
     }
 
     public function show($id)
@@ -57,15 +57,15 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->route('category.index')
-            ->with('success', 'Category has been updated');
+        return redirect()->route('admin.index')
+            ->with('success', "Wijzigingen aan {$category->name} zijn opgeslagen");
     }
 
     public function destroy($id)
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect()->route('category.index')
-            ->with('success', "{$category->name} has been deleted");
+        return redirect()->route('admin.index')
+            ->with('success', "{$category->name} is verwijdert");
     }
 }

@@ -2,8 +2,7 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img style="height: 220px" src="{{ "media\\" . $product->product_image }}" class="card-img"
-                     alt="Product image">
+                <img style="height: 220px" src="{{url("/media/{$product->product_image}")}}" class="card-img" alt="Product image">
             </div>
             <div class="col-md-8">
                 <div class="card-body">

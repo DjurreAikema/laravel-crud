@@ -45,7 +45,7 @@ class ProductController extends Controller
         };
 
         return redirect()->route('product.index')
-            ->with('success', 'New product created');
+            ->with('success', 'Nieuw product is aangemaakt');
     }
 
     public function show($id)
@@ -76,7 +76,7 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->route('product.index')
-            ->with('success', 'Product has been updated');
+            ->with('success', "Wijzigingen aan {$product->name} zijn opgeslagen");
     }
 
     public function destroy($id)
@@ -89,6 +89,6 @@ class ProductController extends Controller
 
         $product->delete();
         return redirect()->route('product.index')
-            ->with('success', "{$product->name} has been deleted");
+            ->with('success', "{$product->name} is verwijdert");
     }
 }

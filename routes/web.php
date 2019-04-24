@@ -27,3 +27,7 @@ Route::get('/product/{product}', 'ProductController@show')->name('product.show')
 Route::get('/product/{product}/edit', 'ProductController@edit')->name('product.edit');
 Route::put('/product/{product}', 'ProductController@update')->name('product.update');
 Route::delete('/product/{product}', 'ProductController@destroy')->name('product.destroy');
+
+Route::get('/admin', 'AdminController@index')->name('admin.index');
+Route::get('/admin/{category}', 'AdminController@categoryShow')->name('admin.category.show');
+

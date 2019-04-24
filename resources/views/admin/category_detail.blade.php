@@ -6,7 +6,7 @@
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-10">
-                        <h3>Producten</h3>
+                        <h3>{{ $category->name }} producten</h3>
                     </div>
                     <div class="col-md-2" style="margin-left: -100px">
                         <a class="btn btn-success" href="{{ route('product.create') }}">Nieuw product toevoegen</a>
@@ -73,30 +73,23 @@
                         <li class="list-group-item">
                             <h3 style="margin-left:-10px;margin-bottom: -7px;font-size: 20px">Product categorieën:</h3>
                         </li>
-                        @foreach($categories as $category)
+                        <li class="list-group-item">
+                            <a href="{{ route('admin.index') }}">Alle producten</a>
+                        </li>
+                        @foreach($other_categories as $category)
                             <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a href="{{ route('admin.category.show', $category->id) }}">{{ $category->name }}</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <form action="{{ route('category.destroy', $category->id) }}" method="post">
-                                            <a class="btn btn-sm btn-primary" href="{{ route('category.edit', $category->id) }}">
-                                                <img style="height: 16px" src="http://cdn.onlinewebfonts.com/svg/img_167289.png">
-                                            </a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                <img style="height: 16px" src="https://cdn3.iconfinder.com/data/icons/objects/512/Bin-512.png">
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
+                                <a href="{{ route('admin.category.show', $category->id) }}">{{ $category->name }}</a>
+                                <form action="{{ route('product.destroy', $product->id) }}" method="post">
+                                    <a class="btn btn-sm btn-primary"
+                                       href="{{ route('product.edit', $product->id) }}">Product bewerken</a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Product verwijderen</button>
+                                </form>
                             </li>
                         @endforeach
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
