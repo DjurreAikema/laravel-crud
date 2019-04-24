@@ -3,32 +3,18 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
-                <h3>Products</h3>
-            </div>
-            <div class="col-md-2">
-                <a class="btn btn-sm btn-success" href="{{ route('product.create') }}">Create new product</a>
-            </div>
-        </div>
-        <hr>
-
-        @if($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
-
-        <div class="row">
             <div class="col-md-9">
+                <div class="card mb-3">
+                    <div class="card-body text-center">
+                        <h1 style="margin: -10px 0px">Producten</h1>
+                    </div>
+                </div>
+                <hr>
+
                 @include('includes.product')
             </div>
-            <div class="col-md-3 card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong style="margin-left:-10px;">Categories:</strong></li>
-                    @foreach($categories as $category)
-                        <li class="list-group-item"><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></li>
-                    @endforeach
-                </ul>
+            <div class="col-md-3 card align-self-start">
+                @include('includes.aside')
             </div>
         </div>
     </div>
