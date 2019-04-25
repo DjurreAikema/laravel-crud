@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use Faker\Provider\File;
 use Illuminate\Http\Request;
 use App\Product;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -44,7 +42,7 @@ class ProductController extends Controller
             request()->product_image->move(public_path('media'), $imageName);
         };
 
-        return redirect()->route('product.index')
+        return redirect()->route('admin.index')
             ->with('success', 'Nieuw product is aangemaakt');
     }
 
@@ -75,7 +73,7 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->save();
 
-        return redirect()->route('product.index')
+        return redirect()->route('admin.index')
             ->with('success', "Wijzigingen aan {$product->name} zijn opgeslagen");
     }
 
@@ -88,7 +86,7 @@ class ProductController extends Controller
         }
 
         $product->delete();
-        return redirect()->route('product.index')
+        return redirect()->route('admin.index')
             ->with('success', "{$product->name} is verwijdert");
     }
 }
