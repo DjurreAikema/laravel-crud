@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-md-12">
                     <label>Product beschrijfing kort:</label>
-                    <textarea class="form-control" name="summary" rows="4"></textarea>
+                    <textarea class="form-control" name="summary" rows="4">Korte beschrijving van maximaal 225 karakters...</textarea>
                     <br>
                 </div>
                 <div class="col-md-12">
@@ -57,8 +57,8 @@
                     <br>
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('product.index') }}" class="btn btn-sm btn-success">Back</a>
-                    <button type="submit" class="btn btn-sm btn-primary">Create product</button>
+                    <a href="{{ route('admin.index') }}" class="btn btn-sm btn-success">Terug</a>
+                    <button type="submit" class="btn btn-sm btn-primary">Product opslaan</button>
                 </div>
             </div>
         </form>

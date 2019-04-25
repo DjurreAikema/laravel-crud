@@ -4,13 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Edit category</h3>
+                <h3>Categorie bewerken</h3>
             </div>
         </div>
 
         @if($errors->any())
             <div class="alert alert-danger">
-                <p>There were some problems with your input.</p>
+                <p>Er is iets mis gegaan bij het bewerken van de categorie.</p>
                 <u>
                     @foreach($errors as $error)
                         <li>{{ $error }}</li>
@@ -24,12 +24,12 @@
             @method('PUT')
             <div class="row">
                 <div class="col-md-12">
-                    <label>Category name:</label>
+                    <label>Categorie naam:</label>
                     <input type="text" name="name" class="form-control" value="{{ $category->name }}">
                     <br>
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-sm btn-primary">Update category</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Bewerkingen opslaan</button>
                 </div>
             </div>
         </form>

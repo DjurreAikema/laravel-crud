@@ -78,14 +78,23 @@
                         </li>
                         @foreach($other_categories as $category)
                             <li class="list-group-item">
-                                <a href="{{ route('admin.category.show', $category->id) }}">{{ $category->name }}</a>
-                                <form action="{{ route('product.destroy', $product->id) }}" method="post">
-                                    <a class="btn btn-sm btn-primary"
-                                       href="{{ route('product.edit', $product->id) }}">Product bewerken</a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Product verwijderen</button>
-                                </form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="{{ route('admin.category.show', $category->id) }}">{{ $category->name }}</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                                            <a class="btn btn-sm btn-primary" href="{{ route('category.edit', $category->id) }}">
+                                                <img style="height: 16px" src="http://cdn.onlinewebfonts.com/svg/img_167289.png">
+                                            </a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <img style="height: 16px" src="https://cdn3.iconfinder.com/data/icons/objects/512/Bin-512.png">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                             </li>
                         @endforeach
                     </ul>
