@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @yield('script_header')
 </head>
 <body style="background-color: #E5E7E9;">
     <div id="app">

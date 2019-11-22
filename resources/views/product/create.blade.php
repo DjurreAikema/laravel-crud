@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@section('script_header')
+    <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '.tinymce'
+        });
+    </script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -11,11 +20,11 @@
         @if($errors->any())
             <div class="alert alert-danger">
                 <p>Er is iets mis gegaan bij het maken van het product.</p>
-                <u>
-                    @foreach($errors as $error)
+                <ul>
+                    @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
-                </u>
+                </ul>
             </div>
         @endif
 
@@ -48,17 +57,17 @@
                 </div>
                 <div class="col-md-12">
                     <label>Product beschrijfing kort:</label>
-                    <textarea class="form-control" name="summary" rows="4"></textarea>
+                    <textarea class="form-control tinymce" name="summary" rows="10"></textarea>
                     <br>
                 </div>
                 <div class="col-md-12">
                     <label>Product beschrijfing:</label>
-                    <textarea class="form-control" name="description" rows="17"></textarea>
+                    <textarea class="form-control tinymce" name="description" rows="20"></textarea>
                     <br>
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('product.index') }}" class="btn btn-sm btn-success">Back</a>
-                    <button type="submit" class="btn btn-sm btn-primary">Create product</button>
+                    <a style="font-size: 20px" href="{{ route('admin.index') }}" class="btn btn-sm btn-success">Terug</a>
+                    <button style="font-size: 20px" type="submit" class="btn btn-sm btn-primary">Maak nieuw product aan</button>
                 </div>
             </div>
         </form>

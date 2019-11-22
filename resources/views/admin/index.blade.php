@@ -29,14 +29,14 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <div class="row no-gutters">
-                                        <div class="col-md-10">
+                                        <div class="col-md-9">
                                             <h3 class="card-title">{{ $product->name }}</h3>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <h3 class="card-text">&euro; {{ $product->price }}</h3>
                                         </div>
                                     </div>
-                                    <p class="card-text">{{ $product->summary }}</p>
+                                    <div  style="max-height: 70px; overflow: hidden; margin-bottom: 15px" class="card-text">{!! $product->summary !!}</div>
                                     <p style="margin-bottom: -15px" class="card-text">
                                         Te bestellen via telefoon: 0516-514973<br>of Email: pietmulder@kpnplanet.nl<br>
                                         <small class="text-muted"><a href="#">Verkoopvoorwaarden</a></small>

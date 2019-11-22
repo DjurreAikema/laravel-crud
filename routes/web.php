@@ -14,6 +14,7 @@
 Auth::routes(['register' => false]);
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/behandelingen', 'HomeController@treatment')->name('treatment.index');
 Route::get('/contact', 'HomeController@contact')->name('contact.index');
 

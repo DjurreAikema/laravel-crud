@@ -28,10 +28,10 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'category_id' => 'required',
             'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'summary' => 'required|max:225',
+            'summary' => 'required',
             'description' => 'required',
         ]);
 
@@ -44,7 +44,7 @@ class ProductController extends Controller
             request()->product_image->move(public_path('media'), $imageName);
         };
 
-        return redirect()->route('product.index')
+        return redirect()->route('admin.index')
             ->with('success', 'Nieuw product is aangemaakt');
     }
 
@@ -63,19 +63,30 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $product = Product::find($id);
+
+        if (!$request->product_image){
+            request()->product_image = $product->product_image;
+        }
+
         $request->validate([
             'name' => 'required',
             'price' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'summary' => 'required',
+            'description' => 'required'
         ]);
 
-        $product = Product::find($id);
         $product->name = $request->name;
         $product->price = $request->price;
         $product->category_id = $request->category_id;
+        $product->product_image = $request->product_image;
+        $product->summary = $request->summary;
+        $product->description = $request->description;
         $product->save();
 
-        return redirect()->route('product.index')
+        return redirect()->route('admin.index')
             ->with('success', "Wijzigingen aan {$product->name} zijn opgeslagen");
     }
 
@@ -88,7 +99,7 @@ class ProductController extends Controller
         }
 
         $product->delete();
-        return redirect()->route('product.index')
+        return redirect()->route('admin.index')
             ->with('success', "{$product->name} is verwijdert");
     }
 }
